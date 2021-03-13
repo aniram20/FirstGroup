@@ -1,0 +1,93 @@
+﻿<Window x:Class="School_Language.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:School_Language"
+        mc:Ignorable="d"
+        Title="Language School" FontFamily="Comic Sans MS" Height="450" Width="800" Icon="Images/school_logo.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Margin="5 2 5 0">
+            <Image Source="Images/school_logo.png" HorizontalAlignment="Left" VerticalAlignment="Center"></Image>
+            <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center">Школа Лангуаге</TextBlock>
+        </DockPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Background="#FFE7FABF" Margin="5">
+            <TextBlock>Сортировка по полу:</TextBlock>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="1" CornerRadius="3" Margin="0 0 0 5" Height="20">
+                <DockPanel>
+                    <RadioButton GroupName="Gender" Margin="0 0 10 0" Checked="RadioButtonM_Checked">М</RadioButton>
+                    <RadioButton GroupName="Gender" Margin="0 0 10 0" Checked="RadioButtonF_Checked">Ж</RadioButton>
+                    <RadioButton GroupName="Gender" Checked="RadioButtonA_Checked">Все</RadioButton>
+                </DockPanel>
+            </Border>
+            <TextBlock>Поиск по фамилии:</TextBlock>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="1" CornerRadius="3" Margin="0 0 0 5">
+                <TextBox TextChanged="TextBoxLastName_TextChanged"></TextBox>
+            </Border>
+            <TextBlock>Поиск по имени:</TextBlock>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="1" CornerRadius="3" Margin="0 0 0 5">
+                <TextBox TextChanged="TextBoxFirstName_TextChanged"></TextBox>
+            </Border>
+            <TextBlock>Поиск по отчеству:</TextBlock>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="1" CornerRadius="3" Margin="0 0 0 5">
+                <TextBox TextChanged="TextBoxPatronymic_TextChanged"></TextBox>
+            </Border>
+            <TextBlock>Поиск по email:</TextBlock>
+            <Border BorderBrush="#FF04A0FF" BorderThickness="1" CornerRadius="3" Margin="0 0 0 5">
+                <TextBox TextChanged="TextBoxEmail_TextChanged"></TextBox>
+            </Border>
+            <Button Background="#FF04A0FF" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+                    Width="120" Height="30" Margin="0 30 0 0">Дни рождения</Button>
+        </StackPanel>
+        <DataGrid x:Name="dgClients" Grid.Column="1" Grid.Row="1" Background="#FFE7FABF" Margin="5"
+                  AutoGenerateColumns="False" RowBackground="#FFE7FABF" AlternatingRowBackground="White"
+                  VerticalGridLinesBrush="#FF04A0FF" HorizontalGridLinesBrush="#FF04A0FF" 
+                  BorderBrush="#FF04A0FF" BorderThickness="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding FirstName}" Header="Имя"/>
+                <DataGridTextColumn Binding="{Binding LastName}" Header="Фамилия"/>
+                <DataGridTextColumn Binding="{Binding Patronymic}" Header="Отчество"/>
+                <DataGridTextColumn Binding="{Binding GenderCode}" Header="Пол"/>
+                <DataGridTextColumn Binding="{Binding Birthday}" Header="Дата рождения"/>
+                <DataGridTextColumn Binding="{Binding RegistrationDate}" Header="Дата регистрации"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Column="0" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Background="#FF04A0FF" Width="40" Height="30" Click="FirstTen_Click">10</Button>
+            <Button Grid.Column="1" Background="#FF04A0FF" Width="40" Height="30" Click="FirstFifty_Click">50</Button>
+            <Button Grid.Column="2" Background="#FF04A0FF" Width="40" Height="30" Click="FirstTwoH_Click">200</Button>
+            <Button Grid.Column="3" Background="#FF04A0FF" Width="40" Height="30" Click="AllData_Click">Все</Button>
+        </Grid>
+        <DockPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock x:Name="tbNumber" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0">100 из 100</TextBlock>
+            <Button Background="#FF04A0FF" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Height="30" Width="50" Margin="10 0 10 0">Назад</Button>
+            <Button Background="#FF04A0FF" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Height="30" Width="50">Вперёд</Button>
+        </DockPanel>
+        <DockPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"
+                   Height="30">
+            <Button Background="#FF04A0FF" HorizontalAlignment="Left" Width="90" Margin="5 0 10 0">Добавить</Button>
+            <Button Background="#FF04A0FF" HorizontalAlignment="Center" Width="90" Margin="0 0 10 0">Редактировать</Button>
+            <Button Background="#FF04A0FF" HorizontalAlignment="Center" Width="90">Удалить</Button>
+        </DockPanel>
+    </Grid>
+</Window>
